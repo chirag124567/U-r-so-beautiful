@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Love You, Mom 💖</title>
+  <style>
+    :root{
+      --bg1:#fff5f7;
+      --bg2:#ffe9f1;
+      --card: rgba(255,255,255,.75);
+      --text:#2b1b24;
+      --muted:#6a4a5a;
+      --accent:#ff4f8b;
+      --accent2:#7c3aed;
+      --shadow: 0 18px 40px rgba(25, 10, 18, .12);
+      --border: 1px solid rgba(255,255,255,.6);
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background: radial-gradient(1000px 600px at 10% 10%, var(--bg2), transparent 55%),
+                  radial-gradient(900px 500px at 90% 20%, #e9f3ff, transparent 50%),
+                  linear-gradient(135deg, var(--bg1), #fff);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 24px 14px;
+    }
+
+    .wrap{
+      width: min(980px, 100%);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 860px){
+      .wrap{ grid-template-columns: 1fr; }
+    }
+
+    .hero{
+      background: var(--card);
+      border: var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 26px 22px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(800px 220px at 10% 0%, rgba(255,79,139,.25), transparent 55%),
+        radial-gradient(700px 220px at 90% 0%, rgba(124,58,237,.18), transparent 60%);
+      pointer-events:none;
+    }
+
+    .hero > *{ position:relative; }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: clamp(28px, 3.7vw, 44px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+
+    .subtitle{
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .love-badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin: 14px 0 18px;
+    }
+
+    .badge{
+      border: 1px solid rgba(255,255,255,.7);
+      background: rgba(255,255,255,.55);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 650;
+      font-size: 14px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 10px 22px rgba(40,10,25,.08);
+    }
+
+    .badge .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(255,79,139,.14);
+    }
+
+    .message{
+      margin-top: 10px;
+      background: rgba(255,255,255,.6);
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 18px;
+      padding: 16px 16px;
+    }
+
+    .message .big{
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .message ul{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap: 18px;
+    }
+
+    .card{
+      background: var(--card);
+      border: var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 18px 16px;
+    }
+
+    .card h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing:-0.01em;
+    }
+
+    .heartline{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    .pill{
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.55);
+      border: 1px solid rgba(255,255,255,.7);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      flex: 1 1 auto;
+      min-width: 140px;
+    }
+
+    .btns{
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+
+    .btn{
+      cursor:pointer;
+      border: none;
+      border-radius: 16px;
+      padding: 12px 14px;
+      font-weight: 800;
+      letter-spacing: .01em;
+      transition: transform .08s ease, filter .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .btn-primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 16px 30px rgba(255,79,139,.25);
+    }
+    .btn-secondary{
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.75);
+    }
+
+    .smallprint{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    footer{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+    }
+
+    /* Simple toast */
+    .toast{
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20, 10, 16, .92);
+      color: white;
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .2s ease, transform .2s ease;
+      max-width: 92vw;
+      font-weight: 650;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="hero" aria-label="Love message">
+      <h1>Mom, I Love You 💖</h1>
+      <p class="subtitle" id="sub">
+        From your son — thank you for loving me, guiding me, and always being my safe place.
+        This little page is just my way of saying: you mean the world to me.
+      </p>
+
+      <div class="love-badges" aria-label="Things I appreciate">
+        <div class="badge"><span class="dot"></span>Everyday sacrifices</div>
+        <div class="badge"><span class="dot"></span>Your endless patience</div>
+        <div class="badge"><span class="dot"></span>Your kind heart</div>
+      </div>
+
+      <section class="message">
+        <p class="big">Sweet things I want you to always remember:</p>
+        <ul>
+          <li>You’re appreciated more than you know.</li>
+          <li>You make my life better just by being you.</li>
+          <li>I’m proud to be your son.</li>
+          <li>Your love is my strength.</li>
+          <li>No matter what, I’ll always care for you.</li>
+        </ul>
+
+        <div class="btns">
+          <button class="btn btn-primary" id="readAloudBtn" type="button">💬 Read it aloud</button>
+          <button class="btn btn-secondary" id="newLineBtn" type="button">✨ Show a new sweet line</button>
+        </div>
+
+        <div class="smallprint" id="hint">
+          Tip: You can edit the text anytime in the HTML file (look for the “EDIT HERE” comments).
+        </div>
+      </section>
+
+      <footer>
+        With all my love — ❤️
+      </footer>
+    </main>
+
+    <aside class="side" aria-label="Extra love cards">
+      <div class="card">
+        <h2>Things I love about you</h2>
+        <div class="heartline">
+          <div class="pill">Your hugs (always)</div>
+          <div class="pill">Your smile</div>
+          <div class="pill">How you care</div>
+          <div class="pill">Your strength</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>One message for you</h2>
+        <div id="quote" style="font-weight:800; font-size:16px; line-height:1.6;">
+          “Mom, thank you for believing in me. I love you so much.”
+        </div>
+        <div class="smallprint">
+          If you want, tell me your mom’s name and I’ll personalize every line.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // EDIT HERE: Put your mom's name and your name.
+    const MOM_NAME = "Mom";      // e.g., "Mom", "Maman", "Sarah", etc.
+    const YOUR_NAME = "Your Son"; // e.g., "Ali", "Jacob", etc.
+
+    const quotes = [
+      `“${MOM_NAME}, you are my greatest blessing. I love you.”`,
+      `“Thank you for every sacrifice you made for me, ${MOM_NAME}.”`,
+      `“Your love makes me feel safe — always, ${MOM_NAME}.”`,
+      `“I’m grateful for you, today and every day.”`,
+      `“Mom, your strength inspires me. I love you so much.”`,
+      `“I’ll always be on your side, ${MOM_NAME}.”`
+    ];
+
+    const toast = document.getElementById('toast');
+    const showToast = (msg) => {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
+    };
+
+    document.getElementById('newLineBtn').addEventListener('click', () => {
+      const i = Math.floor(Math.random() * quotes.length);
+      document.getElementById('quote').textContent = quotes[i];
+      showToast("Sweet line updated ✨");
+    });
+
+    // Read aloud using browser speech (works on many phones/laptops).
+    document.getElementById('readAloudBtn').addEventListener('click', async () => {
+      const sub = document.getElementById('sub').innerText;
+      const quote = document.getElementById('quote').innerText;
+      const full = `${sub}. ${quote} With love from ${YOUR_NAME}.`;
+
+      if (!('speechSynthesis' in window)) {
+        showToast("Sorry — Read aloud isn't supported on this device.");
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(full);
+      u.rate = 1.02;
+      u.pitch = 1.0;
+      u.volume = 1.0;
+      window.speechSynthesis.speak(u);
+      showToast("Reading aloud 💬");
+    });
+  </script>
+</body>
+</html>
