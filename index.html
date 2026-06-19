@@ -3,350 +3,390 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>I Love You, Mom 💖</title>
+  <title>Surprise 💖</title>
   <style>
     :root{
-      --bg1:#fff5f7;
-      --bg2:#ffe9f1;
-      --card: rgba(255,255,255,.75);
-      --text:#2b1b24;
-      --muted:#6a4a5a;
-      --accent:#ff4f8b;
-      --accent2:#7c3aed;
-      --shadow: 0 18px 40px rgba(25, 10, 18, .12);
-      --border: 1px solid rgba(255,255,255,.6);
+      --bg1:#0b1020;
+      --bg2:#1a2a6c;
+      --card: rgba(255,255,255,.10);
+      --card2: rgba(255,255,255,.16);
+      --text:#f7f7ff;
+      --muted: rgba(247,247,255,.75);
+      --pink:#ff4fd8;
+      --rose:#ff6b6b;
+      --mint:#3cf7d7;
+      --gold:#ffd166;
     }
-
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background: radial-gradient(1000px 600px at 10% 10%, var(--bg2), transparent 55%),
-                  radial-gradient(900px 500px at 90% 20%, #e9f3ff, transparent 50%),
-                  linear-gradient(135deg, var(--bg1), #fff);
+      color:var(--text);
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding: 24px 14px;
+      padding:18px;
+      background:
+        radial-gradient(800px 500px at 20% 20%, rgba(255,79,216,.25), transparent 55%),
+        radial-gradient(700px 450px at 80% 30%, rgba(60,247,215,.18), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      overflow-x:hidden;
     }
 
     .wrap{
-      width: min(980px, 100%);
-      display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 18px;
-    }
-
-    @media (max-width: 860px){
-      .wrap{ grid-template-columns: 1fr; }
-    }
-
-    .hero{
-      background: var(--card);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 26px 22px;
-      overflow:hidden;
+      width:min(760px, 100%);
       position:relative;
     }
 
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(800px 220px at 10% 0%, rgba(255,79,139,.25), transparent 55%),
-        radial-gradient(700px 220px at 90% 0%, rgba(124,58,237,.18), transparent 60%);
+    /* Floating sparkle background */
+    .sparkles{
+      position:absolute; inset:-40px;
       pointer-events:none;
+      opacity:.95;
+      filter: drop-shadow(0 10px 30px rgba(0,0,0,.25));
     }
 
-    .hero > *{ position:relative; }
-
-    h1{
-      margin: 0 0 10px;
-      font-size: clamp(28px, 3.7vw, 44px);
-      letter-spacing: -0.02em;
-      line-height: 1.05;
+    .card{
+      position:relative;
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 22px;
+      padding: 26px 18px;
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.12);
+      overflow:hidden;
     }
 
-    .subtitle{
-      margin: 0 0 18px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-    .love-badges{
+    .top{
       display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin: 14px 0 18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      padding: 0 6px;
     }
 
     .badge{
-      border: 1px solid rgba(255,255,255,.7);
-      background: rgba(255,255,255,.55);
-      padding: 10px 12px;
-      border-radius: 999px;
-      font-weight: 650;
-      font-size: 14px;
-      display:flex;
+      display:inline-flex;
       align-items:center;
-      gap:8px;
-      box-shadow: 0 10px 22px rgba(40,10,25,.08);
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--muted);
+      font-weight:600;
+      letter-spacing:.2px;
+      backdrop-filter: blur(8px);
     }
 
     .badge .dot{
       width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(255,79,139,.14);
+      background: radial-gradient(circle at 30% 30%, #fff, var(--pink));
+      box-shadow: 0 0 18px rgba(255,79,216,.7);
+    }
+
+    h1{
+      margin: 14px 0 6px;
+      font-size: clamp(26px, 4vw, 44px);
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+
+    .name{
+      background: linear-gradient(90deg, var(--pink), var(--mint), var(--gold));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      text-shadow: 0 12px 40px rgba(255,79,216,.18);
+    }
+
+    .subtitle{
+      margin: 6px 0 18px;
+      color: var(--muted);
+      font-size: clamp(14px, 2.2vw, 18px);
+      line-height:1.6;
     }
 
     .message{
-      margin-top: 10px;
-      background: rgba(255,255,255,.6);
-      border: 1px solid rgba(255,255,255,.65);
+      margin-top: 16px;
+      display:grid;
+      gap:12px;
+      padding: 14px 10px;
+    }
+
+    .bubble{
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
       border-radius: 18px;
-      padding: 16px 16px;
+      padding: 14px 14px;
+      backdrop-filter: blur(10px);
     }
 
-    .message .big{
-      margin: 0 0 10px;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.45;
+    .bubble strong{
+      color: #fff;
+      font-weight:800;
     }
 
-    .message ul{
-      margin: 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .side{
+    .heart-line{
       display:flex;
-      flex-direction:column;
-      gap: 18px;
-    }
-
-    .card{
-      background: var(--card);
-      border: var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 18px 16px;
-    }
-
-    .card h2{
-      margin: 0 0 10px;
-      font-size: 18px;
-      letter-spacing:-0.01em;
-    }
-
-    .heartline{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-    }
-
-    .pill{
-      padding: 10px 12px;
-      border-radius: 16px;
-      background: rgba(255,255,255,.55);
-      border: 1px solid rgba(255,255,255,.7);
-      color: var(--muted);
-      font-weight: 600;
-      font-size: 14px;
-      flex: 1 1 auto;
-      min-width: 140px;
-    }
-
-    .btns{
-      display:flex;
-      gap: 12px;
-      flex-wrap:wrap;
-      margin-top: 14px;
-    }
-
-    .btn{
-      cursor:pointer;
-      border: none;
-      border-radius: 16px;
-      padding: 12px 14px;
-      font-weight: 800;
-      letter-spacing: .01em;
-      transition: transform .08s ease, filter .15s ease;
-      display:inline-flex;
-      align-items:center;
       gap:10px;
-      user-select:none;
-    }
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-primary{
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: white;
-      box-shadow: 0 16px 30px rgba(255,79,139,.25);
-    }
-    .btn-secondary{
-      background: rgba(255,255,255,.65);
-      color: var(--text);
-      border: 1px solid rgba(255,255,255,.75);
-    }
-
-    .smallprint{
-      margin-top: 10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 8px;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
+      font-size: 14px;
     }
 
-    footer{
-      margin-top: 14px;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
+    .btnrow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 18px;
+      padding: 0 6px;
     }
 
-    /* Simple toast */
-    .toast{
-      position: fixed;
-      bottom: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(20, 10, 16, .92);
-      color: white;
-      padding: 12px 14px;
+    button{
+      cursor:pointer;
+      border:none;
+      padding: 12px 16px;
       border-radius: 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.25);
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity .2s ease, transform .2s ease;
-      max-width: 92vw;
-      font-weight: 650;
+      font-weight:800;
+      letter-spacing:.2px;
+      transition: transform .12s ease, filter .12s ease, background .12s ease;
     }
-    .toast.show{
-      opacity: 1;
-      transform: translateX(-50%) translateY(-6px);
+    button:active{ transform: translateY(1px) scale(.99); }
+
+    .primary{
+      background: linear-gradient(90deg, var(--pink), var(--rose));
+      color: #140015;
+      box-shadow: 0 16px 40px rgba(255,79,216,.28);
+    }
+    .secondary{
+      background: rgba(255,255,255,.10);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+
+    .footer{
+      margin-top: 16px;
+      color: rgba(247,247,255,.65);
+      font-size: 12.5px;
+      padding: 0 6px;
+    }
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index:50;
+    }
+    .modal{
+      width:min(540px, 100%);
+      background: rgba(20,20,30,.92);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
+      position:relative;
+      overflow:hidden;
+    }
+    .modal h2{
+      margin: 6px 0 6px;
+      font-size: 22px;
+    }
+    .modal p{
+      margin: 8px 0 14px;
+      color: rgba(247,247,255,.78);
+      line-height:1.6;
+      font-size: 15px;
+    }
+    .modal .close{
+      position:absolute;
+      top:10px; right:10px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: var(--text);
+      width: 40px; height:40px;
+      border-radius: 12px;
+      font-size: 18px;
+    }
+    .modal .actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .modal .actions button{
+      flex:1;
+      min-width: 160px;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <main class="hero" aria-label="Love message">
-      <h1>Mom, I Love You 💖</h1>
-      <p class="subtitle" id="sub">
-        From your son — thank you for loving me, guiding me, and always being my safe place.
-        This little page is just my way of saying: you mean the world to me.
+    <div class="sparkles" aria-hidden="true">
+      <!-- Simple inline “sparkles” -->
+      <svg width="100%" height="100%" viewBox="0 0 800 500" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff4fd8" stop-opacity=".9"/>
+            <stop offset=".6" stop-color="#3cf7d7" stop-opacity=".65"/>
+            <stop offset="1" stop-color="#ffd166" stop-opacity=".8"/>
+          </linearGradient>
+        </defs>
+        <g fill="url(#g1)" opacity=".9">
+          <circle cx="120" cy="110" r="4"/>
+          <circle cx="170" cy="70" r="2.5"/>
+          <circle cx="250" cy="140" r="3"/>
+          <circle cx="620" cy="90" r="4"/>
+          <circle cx="690" cy="150" r="2.5"/>
+          <circle cx="520" cy="190" r="3.5"/>
+          <circle cx="120" cy="320" r="3.2"/>
+          <circle cx="220" cy="380" r="2.7"/>
+          <circle cx="640" cy="320" r="3.4"/>
+          <circle cx="720" cy="360" r="2.4"/>
+        </g>
+
+        <!-- Rays -->
+        <g stroke="url(#g1)" stroke-width="2" opacity=".35">
+          <path d="M90 250 L150 210"/>
+          <path d="M710 210 L650 250"/>
+          <path d="M410 60 L450 120"/>
+          <path d="M360 430 L420 390"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="card" role="region" aria-label="Surprise message">
+      <div class="top">
+        <div class="badge">
+          <span class="dot"></span>
+          <span>Open for a sweet surprise ✨</span>
+        </div>
+      </div>
+
+      <h1>
+        You’re <span class="name">beautiful</span> 💖
+        <br/>
+        and the <span class="name">prettiest girl</span> 🌷
+      </h1>
+
+      <p class="subtitle">
+        I just wanted to remind you: you’re amazing, you’re loved, and you deserve the best.
+        Every smile from you makes the world softer. 💕
       </p>
 
-      <div class="love-badges" aria-label="Things I appreciate">
-        <div class="badge"><span class="dot"></span>Everyday sacrifices</div>
-        <div class="badge"><span class="dot"></span>Your endless patience</div>
-        <div class="badge"><span class="dot"></span>Your kind heart</div>
-      </div>
-
-      <section class="message">
-        <p class="big">Sweet things I want you to always remember:</p>
-        <ul>
-          <li>You’re appreciated more than you know.</li>
-          <li>You make my life better just by being you.</li>
-          <li>I’m proud to be your son.</li>
-          <li>Your love is my strength.</li>
-          <li>No matter what, I’ll always care for you.</li>
-        </ul>
-
-        <div class="btns">
-          <button class="btn btn-primary" id="readAloudBtn" type="button">💬 Read it aloud</button>
-          <button class="btn btn-secondary" id="newLineBtn" type="button">✨ Show a new sweet line</button>
+      <div class="message">
+        <div class="bubble">
+          <strong>Sweet things:</strong>
+          <div class="heart-line">
+            <span>• You make everything feel brighter</span>
+            <span>• Your heart is beautiful</span>
+            <span>• You’re doing great—always</span>
+          </div>
         </div>
 
-        <div class="smallprint" id="hint">
-          Tip: You can edit the text anytime in the HTML file (look for the “EDIT HERE” comments).
-        </div>
-      </section>
-
-      <footer>
-        With all my love — ❤️
-      </footer>
-    </main>
-
-    <aside class="side" aria-label="Extra love cards">
-      <div class="card">
-        <h2>Things I love about you</h2>
-        <div class="heartline">
-          <div class="pill">Your hugs (always)</div>
-          <div class="pill">Your smile</div>
-          <div class="pill">How you care</div>
-          <div class="pill">Your strength</div>
+        <div class="bubble">
+          <strong>One more:</strong>
+          <div class="heart-line">
+            <span>• You’re not just pretty—you’re special</span>
+            <span>• You deserve love that feels safe & warm</span>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <h2>One message for you</h2>
-        <div id="quote" style="font-weight:800; font-size:16px; line-height:1.6;">
-          “Mom, thank you for believing in me. I love you so much.”
-        </div>
-        <div class="smallprint">
-          If you want, tell me your mom’s name and I’ll personalize every line.
-        </div>
+      <div class="btnrow">
+        <button class="primary" id="openBtn">Show me more 💌</button>
+        <button class="secondary" id="changeBtn">Another sweet line ✨</button>
       </div>
-    </aside>
+
+      <div class="footer">
+        Made with love for you. (You can edit the messages anytime.)
+      </div>
+    </div>
   </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- Modal -->
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="close" id="closeBtn" aria-label="Close">×</button>
+      <h2 id="modalTitle">You’re gorgeous 💗</h2>
+      <p id="modalText">
+        You have a vibe that’s both strong and gentle. I hope today treats you kindly—because you deserve it.
+      </p>
+      <div class="actions">
+        <button class="primary" id="okBtn">Aww I love this</button>
+        <button class="secondary" id="moreBtn">More sweet words</button>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // EDIT HERE: Put your mom's name and your name.
-    const MOM_NAME = "Mom";      // e.g., "Mom", "Maman", "Sarah", etc.
-    const YOUR_NAME = "Your Son"; // e.g., "Ali", "Jacob", etc.
-
-    const quotes = [
-      `“${MOM_NAME}, you are my greatest blessing. I love you.”`,
-      `“Thank you for every sacrifice you made for me, ${MOM_NAME}.”`,
-      `“Your love makes me feel safe — always, ${MOM_NAME}.”`,
-      `“I’m grateful for you, today and every day.”`,
-      `“Mom, your strength inspires me. I love you so much.”`,
-      `“I’ll always be on your side, ${MOM_NAME}.”`
+    const lines = [
+      "Your smile is powerful—like sunshine after rain ☀️",
+      "You’re the kind of pretty that comes from kindness too 💕",
+      "You deserve someone who hypes you up every day ✨",
+      "Just existing makes the world better. That’s a fact 🌷",
+      "I’m rooting for you—always 🤍",
+      "You’re lovely, and you always have been."
     ];
 
-    const toast = document.getElementById('toast');
-    const showToast = (msg) => {
-      toast.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
-    };
+    const modalLines = [
+      "You are beautiful in every way—inside and out. I hope you feel it today.",
+      "You’re the prettiest girl, and the sweetest soul to match. Don’t forget that.",
+      "Even if you’re having a rough day, your future is bright—and so are you."
+    ];
 
-    document.getElementById('newLineBtn').addEventListener('click', () => {
-      const i = Math.floor(Math.random() * quotes.length);
-      document.getElementById('quote').textContent = quotes[i];
-      showToast("Sweet line updated ✨");
+    let lineIndex = 0;
+    let modalIndex = 0;
+
+    const openBtn = document.getElementById("openBtn");
+    const changeBtn = document.getElementById("changeBtn");
+
+    const modalBackdrop = document.getElementById("modalBackdrop");
+    const closeBtn = document.getElementById("closeBtn");
+    const okBtn = document.getElementById("okBtn");
+    const moreBtn = document.getElementById("moreBtn");
+
+    const modalText = document.getElementById("modalText");
+
+    function showModal() {
+      modalBackdrop.style.display = "flex";
+      modalIndex = (modalIndex + 1) % modalLines.length;
+      modalText.textContent = modalLines[modalIndex];
+    }
+
+    function nextLine() {
+      lineIndex = (lineIndex + 1) % lines.length;
+      // Update one of the bubble lines by replacing the modal text as a "preview"
+      // (simple + cute)
+      modalIndex = (lineIndex + 1) % modalLines.length;
+      // Small effect: change subtitle by appending a cute sentence
+      const subtitle = document.querySelector(".subtitle");
+      subtitle.textContent = subtitle.textContent.split("—")[0].trim() + "— " + lines[lineIndex];
+    }
+
+    openBtn.addEventListener("click", showModal);
+    changeBtn.addEventListener("click", nextLine);
+
+    closeBtn.addEventListener("click", () => modalBackdrop.style.display = "none");
+    okBtn.addEventListener("click", () => modalBackdrop.style.display = "none");
+    modalBackdrop.addEventListener("click", (e) => {
+      if (e.target === modalBackdrop) modalBackdrop.style.display = "none";
     });
 
-    // Read aloud using browser speech (works on many phones/laptops).
-    document.getElementById('readAloudBtn').addEventListener('click', async () => {
-      const sub = document.getElementById('sub').innerText;
-      const quote = document.getElementById('quote').innerText;
-      const full = `${sub}. ${quote} With love from ${YOUR_NAME}.`;
-
-      if (!('speechSynthesis' in window)) {
-        showToast("Sorry — Read aloud isn't supported on this device.");
-        return;
-      }
-
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(full);
-      u.rate = 1.02;
-      u.pitch = 1.0;
-      u.volume = 1.0;
-      window.speechSynthesis.speak(u);
-      showToast("Reading aloud 💬");
+    moreBtn.addEventListener("click", () => {
+      modalIndex = (modalIndex + 1) % modalLines.length;
+      modalText.textContent = modalLines[modalIndex];
     });
+
+    // Optional: auto-open after a short moment (set to false if you want manual)
+    // setTimeout(showModal, 600);
   </script>
 </body>
 </html>
